@@ -19,6 +19,10 @@ streamlit.metric("Total Income", f"£{total_income:,.2f}")
 streamlit.metric("Total Expense", f"£{total_expense:,.2f}")
 streamlit.metric("Balance", f"£{balance:,.2f}")
 
+avg_transaction = data['Amount'].mean()
+streamlit.metric("Average Transaction", f"£{avg_transaction:,.2f}")
+
+
 streamlit.subheader("Spending by category")
 chart = altair.Chart(data[data['Type'] == 'expense']).mark_bar().encode(
     x='Category',
