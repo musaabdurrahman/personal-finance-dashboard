@@ -1,12 +1,12 @@
-import streamlit
+import streamlit as st
 import pandas as pd
-import altair 
+import altair as alt
 
 
-streamlit.title("My First Streamlit App")
-streamlit.header("Data Overview")
+st.title("My First Streamlit App")
+st.header("Data Overview")
 data = pd.read_csv("transactions.csv")
-streamlit.dataframe(data)
+st.dataframe(data)
 
 data['Type'] = data['Type'].str.strip().str.lower()
 
@@ -14,30 +14,30 @@ total_income = data[data['Type'] == 'income']['Amount'].sum()
 total_expense = data[data['Type'] == 'expense']['Amount'].sum()
 balance = total_income - total_expense
 
-streamlit.subheader("Financial Summary")
-streamlit.metric("Total Income", f"£{total_income:,.2f}")
-streamlit.metric("Total Expense", f"£{total_expense:,.2f}")
-streamlit.metric("Balance", f"£{balance:,.2f}")
+st.subheader("Financial Summary")
+st.metric("Total Income", f"£{total_income:,.2f}")
+st.metric("Total Expense", f"£{total_expense:,.2f}")
+st.metric("Balance", f"£{balance:,.2f}")
 
 avg_transaction = data['Amount'].mean()
-streamlit.metric("Average Transaction", f"£{avg_transaction:,.2f}")
+st.metric("Average Transaction", f"£{avg_transaction:,.2f}")
 
 
-streamlit.subheader("Spending by category")
-chart = altair.Chart(data[data['Type'] == 'expense']).mark_bar().encode(
+st.subheader("Spending by category")
+chart = alt.Chart(data[data['Type'] == 'expense']).mark_bar().encode(
     x='Category',
     y='Amount',
 )
-streamlit.altair_chart(chart, use_container_width=True)
-streamlit.subheader("Income by category")
-chart_income = altair.Chart(data[data['Type'] == 'income']).mark_bar().encode(
+st.altair_chart(chart, use_container_width=True)
+st.subheader("Income by category")
+chart_income = alt.Chart(data[data['Type'] == 'income']).mark_bar().encode(
     x='Category',
     y='Amount',
 )
-streamlit.altair_chart(chart_income, use_container_width=True)
+st.altair_chart(chart_income, use_container_width=True)
 
-streamlit.subheader("Balance Over Time")
+st.subheader("Balance Over Time")
 data['Date'] = pd.to_datetime(data['Date'], errors='coerce')
 data = data.sort_values('Date')
 data['Balance'] = (data.apply(lambda row: row['Amount'] if row['Type'] == 'income' else -row['Amount'], axis=1)).cumsum()
-streamlit.line_chart(data.set_index('Date')['Balance'])
+st.line_chart(data.set_index('Date')['Balance'])
