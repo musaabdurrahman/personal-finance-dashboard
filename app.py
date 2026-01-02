@@ -2,8 +2,9 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 
+st.title("Personal Finance Dashboard")
+st.write("A simple dashboard to explore income, expenses, and balance from a CSV file.")
 
-st.title("My First Streamlit App")
 st.header("Data Overview")
 data = pd.read_csv("transactions.csv")
 st.dataframe(data)
