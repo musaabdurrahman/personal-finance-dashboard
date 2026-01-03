@@ -23,7 +23,7 @@ st.metric("Balance", f"£{balance:,.2f}")
 avg_transaction = data['Amount'].mean()
 st.metric("Average Transaction", f"£{avg_transaction:,.2f}")
 
-
+st.header("Visualisations")
 st.subheader("Spending by category")
 chart = alt.Chart(data[data['Type'] == 'expense']).mark_bar().encode(
     x='Category',
