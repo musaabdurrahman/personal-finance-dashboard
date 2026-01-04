@@ -6,7 +6,7 @@ st.title("Personal Finance Dashboard")
 st.write("A simple dashboard to explore income, expenses, and balance from a CSV file.")
 
 st.header("Data Overview")
-data = pd.read_csv("transactions.csv")
+data = pd.read_csv("transactions.csv") # transactions.csv contains Date, Category, Type (income/expense), and Amount
 st.dataframe(data)
 
 data['Type'] = data['Type'].str.strip().str.lower()
