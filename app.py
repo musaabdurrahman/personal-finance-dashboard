@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 
+st.set_page_config(page_title="Personal Finance Dashboard", layout="centered")
+
 st.title("Personal Finance Dashboard")
 st.write("A simple dashboard to explore income, expenses, and balance from a CSV file.")
 
