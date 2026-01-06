@@ -17,6 +17,8 @@ total_income = data[data['Type'] == 'income']['Amount'].sum()
 total_expense = data[data['Type'] == 'expense']['Amount'].sum()
 balance = total_income - total_expense
 
+st.divider()
+
 st.subheader("Financial Summary")
 st.metric("Total Income", f"£{total_income:,.2f}")
 st.metric("Total Expense", f"£{total_expense:,.2f}")
@@ -24,6 +26,8 @@ st.metric("Balance", f"£{balance:,.2f}")
 
 avg_transaction = data['Amount'].mean()
 st.metric("Average Transaction", f"£{avg_transaction:,.2f}")
+
+st.divider()
 
 st.header("Visualisations")
 st.subheader("Spending by category")
