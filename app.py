@@ -1,3 +1,4 @@
+# Simple personal finance dashboard built with Streamlit, pandas, and Altair
 import streamlit as st
 import pandas as pd
 import altair as alt
