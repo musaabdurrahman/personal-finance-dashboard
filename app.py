@@ -11,6 +11,9 @@ st.write("A simple dashboard to explore income, expenses, and balance from a CSV
 data = pd.read_csv("transactions.csv") # transactions.csv contains Date, Category, Type (income/expense), and Amount
 data['Type'] = data['Type'].str.strip().str.lower()
 
+#sidebar filters
+# Filters allow users to interactively subset the data by date and category
+
 st.sidebar.header("Filters")
 data['Date'] = pd.to_datetime(data['Date'], errors='coerce')
 data = data.sort_values('Date')
