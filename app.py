@@ -6,7 +6,7 @@ import altair as alt
 st.set_page_config(page_title="Personal Finance Dashboard", layout="centered")
 
 st.title("Personal Finance Dashboard")
-st.write("A simple dashboard to explore income, expenses, and balance from a CSV file.")
+st.caption("A simple dashboard to explore income, expenses, and balance from a CSV file.")
 
 data = pd.read_csv("transactions.csv") # transactions.csv contains Date, Category, Type (income/expense), and Amount
 data['Type'] = data['Type'].str.strip().str.lower()
