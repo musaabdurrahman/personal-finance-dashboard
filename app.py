@@ -63,6 +63,7 @@ st.metric("Average Transaction", f"£{avg_transaction:,.2f}")
 
 st.divider()
 
+#visualisations
 st.header("Visualisations")
 st.subheader("Spending by category")
 chart = alt.Chart(filtered_data[filtered_data['Type'] == 'expense']).mark_bar().encode(
