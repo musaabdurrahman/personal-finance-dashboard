@@ -47,6 +47,7 @@ if filtered_data.empty:
 st.header("Data Overview")
 st.dataframe(filtered_data)
 
+#summary metrics
 total_income = filtered_data[filtered_data['Type'] == 'income']['Amount'].sum()
 total_expense = filtered_data[filtered_data['Type'] == 'expense']['Amount'].sum()
 balance = total_income - total_expense
