@@ -5,6 +5,7 @@ import altair as alt
 
 st.set_page_config(page_title="Personal Finance Dashboard", layout="centered")
 
+#title and description
 st.title("Personal Finance Dashboard")
 st.caption("A simple dashboard to explore income, expenses, and balance from a CSV file.")
 
