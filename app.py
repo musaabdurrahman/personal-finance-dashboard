@@ -82,4 +82,4 @@ st.altair_chart(chart_income, use_container_width=True)
 
 st.subheader("Balance Over Time")
 filtered_data['Balance'] = (filtered_data.apply(lambda row: row['Amount'] if row['Type'] == 'income' else -row['Amount'], axis=1)).cumsum()
-st.line_chart(data.set_index('Date')['Balance'], use_container_width=True)
+st.line_chart(filtered_data.set_index('Date')['Balance'], use_container_width=True)
