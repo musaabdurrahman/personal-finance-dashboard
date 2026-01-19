@@ -3,22 +3,30 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 
+
+def load_and_clean_data(path: str) -> pd.DataFrame:
+    """
+    Load transactions data from CSV and perform basic cleaning.
+    """
+    data = pd.read_csv(path)
+    data['Type'] = data['Type'].str.strip().str.lower()
+    data['Date'] = pd.to_datetime(data['Date'], errors='coerce')
+    data = data.dropna(subset=['Date'])
+    data = data.sort_values('Date')
+    return data
+
+
 st.set_page_config(page_title="Personal Finance Dashboard", layout="centered")
 
 #title and description
 st.title("Personal Finance Dashboard")
 st.caption("A simple dashboard to explore income, expenses, and balance from a CSV file.")
 
-data = pd.read_csv("transactions.csv") # transactions.csv contains Date, Category, Type (income/expense), and Amount
-data['Type'] = data['Type'].str.strip().str.lower()
-
 #sidebar filters
 # Filters allow users to interactively subset the data by date and category
 
-st.sidebar.header("Filters")
-data['Date'] = pd.to_datetime(data['Date'], errors='coerce')
-data = data.sort_values('Date')
-data = data.dropna(subset=['Date'])
+
+data = load_and_clean_data("transactions.csv")
 min_date = data['Date'].min()
 max_date = data['Date'].max()
 start_date, end_date = st.sidebar.date_input(
