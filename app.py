@@ -4,6 +4,7 @@ import pandas as pd
 import altair as alt
 
 
+@st.cache_data
 def load_and_clean_data(path: str) -> pd.DataFrame:
     """
     Load transactions data from CSV and perform basic cleaning.
