@@ -47,7 +47,8 @@ categories = st.sidebar.multiselect(
 )
 filtered_data = filtered_data[
     filtered_data['Category'].isin(categories)
-]
+].copy()
+
 if filtered_data.empty:
     st.warning("No data for selected filters.")
     st.stop()
