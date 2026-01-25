@@ -75,7 +75,7 @@ st.metric("Average Transaction", f"£{avg_transaction:,.2f}")
 
 st.divider()
 
-#visualisationshhupu
+#visualisations
 st.markdown("---")
 st.header("Visualisations Overview")
 st.subheader("Spending by category")
