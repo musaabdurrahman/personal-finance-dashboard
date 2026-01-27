@@ -81,8 +81,7 @@ st.markdown("---")
 st.header("Visualisations Overview")
 st.subheader("Spending by category")
 chart = alt.Chart(filtered_data[filtered_data['Type'] == 'expense']).mark_bar().encode(
-    x='Category',x=alt.X('Category', sort='-y'),
-
+    x=alt.X('Category', sort='-y'),
     y='Amount',
 )
 st.altair_chart(chart, use_container_width=True)
