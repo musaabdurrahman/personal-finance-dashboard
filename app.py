@@ -87,7 +87,7 @@ chart = alt.Chart(filtered_data[filtered_data['Type'] == 'expense']).mark_bar().
 st.altair_chart(chart, use_container_width=True)
 st.subheader("Income by category")
 chart_income = alt.Chart(filtered_data[filtered_data['Type'] == 'income']).mark_bar().encode(
-    x='Category',
+    x=alt.X('Category', sort='-y'),
     y='Amount',
 )
 st.altair_chart(chart_income, use_container_width=True)
